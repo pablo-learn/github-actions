@@ -8,24 +8,24 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+          with:
+            node-version: 14
       - run: npm install
-      - name: node_modules_artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: node_modules
-          path: node_modules
       
   test:
     needs: dependences
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/setup-node@v3
+          with:
+            node-version: 14
       - run: echo "running parallel 2"
   build:
     needs: test
     runs-on: ubuntu-20.04
     steps:
-      - name: Download a single artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: node_modules_artifact
+      - uses: actions/setup-node@v3
+          with:
+            node-version: 14
       - run: npm run build
