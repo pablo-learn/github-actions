@@ -1,0 +1,19 @@
+name: action de prueba
+on:
+  push:
+    branches:
+      - main
+jobs:
+  parallell-1:
+    runs-on: ubuntu-20.04
+    steps:
+      - run: echo "running parallel 1"
+  parallel-2:
+    runs-on: ubuntu-20.04
+    steps:
+      - run: echo "running parallel 2"
+  parallel-3:
+    needs: parallel-2
+    runs-on: ubuntu-20.04
+    steps:
+      - run: echo "running parallel 3"
