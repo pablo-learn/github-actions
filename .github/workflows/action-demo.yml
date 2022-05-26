@@ -15,5 +15,5 @@ jobs:
   parallel-3:
     needs: parallel-2
     runs-on: ubuntu-20.04
-      steps:
-        - run: echo "running parallel 3"
+    steps:
+      - run: echo "running parallel 3"
