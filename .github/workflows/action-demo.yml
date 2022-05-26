@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  explore jobs:
+  explore-jobs:
     runs-on: ubuntu-20.04
     steps:
       - run: echo "hi actions run commands here!"
