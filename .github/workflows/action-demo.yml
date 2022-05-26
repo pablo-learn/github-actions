@@ -4,16 +4,17 @@ on:
     branches:
       - main
 jobs:
-  parallell-1:
+  dependences:
     runs-on: ubuntu-20.04
     steps:
-      - run: echo "running parallel 1"
-  parallel-2:
+      - run: npm install
+  test:
+    needs: dependences
     runs-on: ubuntu-20.04
     steps:
       - run: echo "running parallel 2"
-  parallel-3:
-    needs: parallel-2
+  build:
+    needs: test
     runs-on: ubuntu-20.04
     steps:
-      - run: echo "running parallel 3"
+      - run: npm run build
