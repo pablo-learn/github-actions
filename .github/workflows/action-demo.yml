@@ -1,0 +1,10 @@
+name: action de prueba
+on:
+  push:
+    branches:
+      - main
+jobs:
+  explore jobs:
+    runs-on: ubuntu-20.04
+    steps:
+      - run: echo "hi actions run commands here!"
