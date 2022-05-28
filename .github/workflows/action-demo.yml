@@ -24,10 +24,10 @@ jobs:
       - run: npm i
       - run: npm run build
       - name: Archive .sveltekit folder
-              uses: actions/upload-artifact@v3
-              with:
-                name: build
-                path: .svelte-kit/
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: .svelte-kit/
   test:
     needs: build
     runs-on: ubuntu-20.04
