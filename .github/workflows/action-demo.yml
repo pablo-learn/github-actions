@@ -13,16 +13,8 @@ jobs:
             node-version: 16
       - run: npm install
       
-  test:
-    needs: dependences
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/setup-node@v3
-        with:
-            node-version: 16
-      - run: echo "running parallel 2"
   build:
-    needs: test
+    needs: dependences
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -31,3 +23,20 @@ jobs:
             node-version: 16
       - run: npm i
       - run: npm run build
+      - name: Archive .sveltekit folder
+              uses: actions/upload-artifact@v3
+              with:
+                name: build
+                path: .svelte-kit/
+  test:
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+            node-version: 16
+      - name: Download build
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+      - run: ls
